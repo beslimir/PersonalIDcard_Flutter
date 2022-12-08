@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const MaterialApp(home: PersonalCard()));
 
-class PersonalCard extends StatelessWidget {
+class PersonalCard extends StatefulWidget {
   const PersonalCard({Key? key}) : super(key: key);
+
+  @override
+  State<PersonalCard> createState() => _PersonalCardState();
+}
+
+class _PersonalCardState extends State<PersonalCard> {
+
+  int yearsNum = 28;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +22,15 @@ class PersonalCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            yearsNum += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -50,7 +67,7 @@ class PersonalCard extends StatelessWidget {
             ),
             const SizedBox(height: 10.0),
             Text(
-              '28',
+              '$yearsNum',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
